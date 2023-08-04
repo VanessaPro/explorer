@@ -1,5 +1,5 @@
 import {Social} from '../../components/social'
-import {FaGithub, FaLinkedin} from 'react-icons/fa'
+import {FaFacebook, FaGithub, FaInstagram, FaLinkedin} from 'react-icons/fa'
 
 export function Home(){
     return(
@@ -23,6 +23,14 @@ export function Home(){
 
              <Social url="https://www.linkedin.com/in/vanessaap20">
               <FaLinkedin size={35} color="#fff"/>  
+             </Social>
+
+             <Social url="">
+              <FaFacebook size={35} color="#fff"/>  
+             </Social>
+
+             <Social url="">
+              <FaInstagram size={35} color="#fff"/>  
              </Social>
             </footer>
 
