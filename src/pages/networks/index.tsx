@@ -1,6 +1,7 @@
-import {useState, FormEvent, useEffect} from 'react'
+import {useState, FormEvent, useEffect} from 'react';
 import {Header} from "../../components/header";
 import { Input } from "../../components/inputs";
+
 
 import {db} from '../../services/faribaseConnection';
 import {
@@ -12,9 +13,9 @@ import {
 export function Networks(){
 
     const [linkedin,setLinkedim] = useState("")
-    const  [github,setGithub] = useState("")
-    const  [facebook,setFacebook] = useState("")
-    const  [instagran, setInstagran] = useState("")
+    const [github,setGithub] = useState("")
+    const [facebook,setFacebook] = useState("")
+    const [instagram, setInstagram] = useState("")
 
     useEffect (() => {
         function loadLinks(){
@@ -25,7 +26,7 @@ export function Networks(){
                     setLinkedim(snapshot.data()?.linkedin)
                     setGithub(snapshot.data()?.github)
                     setFacebook(snapshot.data()?.facebook)
-                    setInstagran(snapshot.data()?.instagran)
+                    setInstagram(snapshot.data()?.instagram)
                     
                 }
 
@@ -46,7 +47,7 @@ export function Networks(){
             github:github
         })
         .then(() =>{
-            console.log("Cdastrados com sucesso")
+            console.log("Cadastrados com sucesso")
         })
         .catch((error) =>{
             console.log("Erro ao cadastrar" + error)
@@ -87,7 +88,7 @@ export function Networks(){
                                 <Input
                                 type="url" 
                                 placeholder="Digite a url do Instagran"
-                                value={instagran}
+                                value={instagram}
                                 onChange={(e) => setGithub(e.target.value)}
                                 />                
 

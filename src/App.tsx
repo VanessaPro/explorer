@@ -1,5 +1,7 @@
 import {createBrowserRouter} from 'react-router-dom'
 
+import {ErrorPage} from './pages/error'
+
 import{Home} from'./pages/home'
 
 import{Admin} from'./pages/admin'
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
         path: '/admin/social',
         element:<Private><Networks/></Private>
     },
+    {
+        path:"*",
+        element:<ErrorPage/>
+    }
 ])
 
 

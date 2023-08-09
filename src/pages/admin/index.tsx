@@ -2,6 +2,7 @@ import {FormEvent, useState, useEffect} from 'react'
 import {Header} from "../../components/header";
 import {Input} from '../../components/inputs';
 
+
 import {FiTrash} from 'react-icons/fi'
 import {db} from '../../services/faribaseConnection'
 import {
@@ -158,7 +159,7 @@ export function Admin(){
                 Meus Links
             </h2>
             
-            {links.map( (link) => (
+            {links.map((link) => (
                 <article 
                 key={link.id}
                 className='flex items-center justify-between w-11/12 max-w-xl rounded py-3 px-2 mb-2 select-none'
