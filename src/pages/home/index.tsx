@@ -66,26 +66,37 @@ export function Home(){
         loadLinks();
     }, [])
 
-    useEffect (() => {
+    useEffect(() => {
+        function loadLinks() {
+            const linksRef = collection(db, "links");
+            const queryRef = query(linksRef, orderBy("created", "asc"));
+    
+            getDocs(queryRef)
+                .then((snapshot) => {
+                    let lista = [] as LinkProps[];
+    
+                    snapshot.forEach((doc) => {
+                        lista.push({
+                            id: doc.id,
+                            name: doc.data().name,
+                            url: doc.data().url,
+                            bg: doc.data().bg,
+                            color: doc.data().color
+                        });
+                    });
+    
+                    setLinks(lista);
+                })
+                .catch((error) => {
+                    console.error("Error fetching links:", error);
+                });
+        }
+    
+        loadLinks();
+    }, []);
+  
+    
 
-        function loadSoacialLinks(){
-            const docRef = doc(db, "social", "link")
-            getDoc(docRef)
-            .then((snaphot) => {
-                if(snaphot.data() != undefined){
-                    setSocialLinks({
-                        linkedin: snaphot.data()?.linkedin,
-                        github: snaphot.data()?.github,
-                        facebook: snaphot.data()?.facebook,
-                        instagram: snaphot.data()?.instagran,
-                    })
-                }
-            })
-            }
-
-        loadSoacialLinks();
-
-    }, [])
 
     return(
         <div className="flex flex-col w-full py-4 items-center justify-center">
@@ -93,8 +104,8 @@ export function Home(){
              <span className="text-gray-50 mb-3">Veja meus links ✌</span>           
 
           <main className=" flex flex-col w-11/12 max-w-xl text-center">
-                    
-           {links.map((link) => (
+
+          {links.map((link) => (
                 
                 <section
                     style={{ backgroundColor: link.bg }}
@@ -107,8 +118,9 @@ export function Home(){
                     </a>
                 </section>
 
-            ))}
-      
+            ))}    
+                    
+          
         {socialLinks && Object.keys(socialLinks).length > 0 &&(
 
             <footer className="flex justify-center gap-3 my-4">
@@ -131,7 +143,7 @@ export function Home(){
 
         )}
 
-
+    
        
     </main>
 

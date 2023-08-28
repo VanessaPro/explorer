@@ -173,6 +173,7 @@ export function Admin(){
                       >
                       <FiTrash size={18} color="#fff"/>
                   </button>
+                 
               </article>
             ))}
         </div>
